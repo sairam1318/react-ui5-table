@@ -2,16 +2,17 @@ import { Table, TableColumn, Label, TableCell, TableRow } from "@ui5/webcomponen
 import { useEffect, useState } from 'react';
 export const MyTable = (props) => {
     const [topics, setTopics] = useState([]);
-    const [loading, setLoading] = useState(true)
+    // const [loading, setLoading] = useState(true)
     useEffect(()=> {
         fetch('https://60b7316917d1dc0017b89431.mockapi.io/users')
             .then(response => response.json())
             .then(json => setTopics(json));
-        setLoading(false);
+        
     }, []);
   return (
     <>
       <Table
+
         className=""
         columns={
           <>
@@ -26,6 +27,7 @@ export const MyTable = (props) => {
             </TableColumn>
            
           </>
+          
         }
         onLoadMore={function noRefCheck() {}}
         onPopinChange={function noRefCheck() {}}
@@ -33,12 +35,15 @@ export const MyTable = (props) => {
         slot=""
         style={{}}
         tooltip=""
+        showNoData
+        noDataText="Loading.."
+        
       >
         {}
 
-        {loading ? <p>Loading...</p> : topics.map(topic => {
+        {topics.map(topic => {
             return(
-                 <TableRow>
+                 <TableRow >
                     <TableCell>
                         <Label>{topic.id}</Label>
                     </TableCell>
