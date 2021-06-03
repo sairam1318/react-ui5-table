@@ -1,0 +1,18 @@
+[
+{
+	"Title" : "Well Completion",
+	"Type" : "Input",
+	"Place holder" : "Type...."
+},
+{
+	"Title" : "Well number",
+	"Type" : "Input",
+	"Place holder" : "Type...."
+},
+{
+	"Title" : "Date",
+	"Type" : "DatePicker",
+	"PlaceHolder": none
+}
+
+]

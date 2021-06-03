@@ -9,6 +9,7 @@
     "@ui5/webcomponents": "^1.0.0-rc.14",
     "@ui5/webcomponents-fiori": "^1.0.0-rc.14",
     "@ui5/webcomponents-react": "^0.16.1",
+    "json-server": "^0.16.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",

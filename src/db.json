@@ -1,0 +1,17 @@
+{
+  "posts": [{
+	"title": "Well Number",
+	"type": "input",
+	"placeHolder" : "Type Well Number.."
+  },
+  {
+    "title": "Well City",
+    "type": "input",
+    "placeHolder" : "Type Well City.."
+  },
+  {
+    "title": "Well Completion Date",
+    "type": "datePicker",
+    "placeHolder" : null
+  }]
+}
