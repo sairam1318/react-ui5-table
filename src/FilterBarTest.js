@@ -3,10 +3,16 @@ import { useEffect, useState } from 'react';
 
 export const WellFilterBar = () => {
     const [metaData, setMetaData] = useState([]);
+    const [errMessage, setErrMessage] = useState();
+    const [errStatus, setErrStatus] = useState(false);
     useEffect(()=> {
         fetch('http://localhost:3000/posts')
             .then(response => response.json())
-            .then(json => {setMetaData(json)});
+            .then(json => {setMetaData(json)})
+            .catch(err => {
+                setErrMessage(err);
+                setErrStatus(true);
+            })
     }, []);
 
     const getFilterItemByType = (fieldMeta, index) => {
@@ -45,7 +51,7 @@ export const WellFilterBar = () => {
                 showFilterConfiguration
                 showSearchOnFiltersDialog
                 >
-            {metaData.map((fieldMeta, index) => {
+            {errStatus ? {errMessage} : metaData.map((fieldMeta, index) => {
                 return getFilterItemByType(fieldMeta, index)
 
             })}

@@ -3,15 +3,25 @@ import { useEffect, useState } from 'react';
 export const MyTable = (props) => {
     const [wellCompletionTable, setWellCompletionTable] = useState([]);
     const [tableHeaders, setTableHeaders] = useState([]);
+    const [errMessage, setErrMessage] = useState();
+    const [errStatus, setErrStatus] = useState(false);
   
     useEffect(()=> {
         fetch('https://60b7316917d1dc0017b89431.mockapi.io/users')
             .then(response => response.json())
             .then(json => setWellCompletionTable(json))
+            .catch(err => {
+              setErrMessage(err);
+              setErrStatus(true);
+          });
             
         fetch('http://localhost:3000/posts')
             .then(response => response.json())
             .then(json => setTableHeaders(json))
+            .catch(err => {
+              setErrMessage(err);
+              setErrStatus(true);
+          })
         
     }, []);
 
@@ -45,14 +55,14 @@ export const MyTable = (props) => {
       <Table
         className=""
         columns={<>
-              {tableHeaders.map((header)=>{
+              {errStatus ? errMessage : tableHeaders.map((header)=>{
                 return loadwellCompletionHeader(header);
               })}
              </>
           }
       >
         {}
-        {wellCompletionTable.map(wellData => {
+        {errStatus ? errMessage : wellCompletionTable.map(wellData => {
             return( 
               loadWellCompletionTableData(wellData)
             )
